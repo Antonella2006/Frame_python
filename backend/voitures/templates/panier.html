@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        p {
+            flex: 1;
+            margin: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .empty-cart {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-button {
+            font-size: 18px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .quantity-display {
+            font-size: 18px;
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon Panier</h1>
+    </header>
+
+    <section>
+        {% if voitures %}
+            <h2>Articles dans votre panier</h2>
+            <ul>
+                {% for voiture in voitures %}
+                    <li>
+                        <img src="{{ voiture.photo.url }}" alt="Photo de {{ voiture.modele }}">
+                        <p>{{ voiture.marque.nom }} {{ voiture.modele }} - €{{ voiture.prix }}</p>
+
+                        <!-- Quantité -->
+                        <div class="quantity-controls">
+                            <form action="{% url 'modifier_quantite' voiture.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" name="action" value="decrease" class="quantity-button">-</button>
+                                <input type="text" class="quantity-display" value="{{ voiture.quantite }}" readonly>
+                                <button type="submit" name="action" value="increase" class="quantity-button">+</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-cart">Votre panier est vide.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CAR MDG. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

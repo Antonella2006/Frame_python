@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #2d3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    margin: 0;
+}
+nav {
+    margin-top: 20px;
+    text-align: center;
+}
+nav a {
+    color: #2d3e50;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #ff6f61;
+}
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+.section h2 {
+    margin-bottom: 20px;
+}
+.voitures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.voiture-card {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+.voiture-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+.voiture-card h3 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+.voiture-card p {
+    font-size: 16px;
+    color: #555;
+}
+footer {
+    background-color: #2d3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.btn-ajouter-panier {
+    background-color: #e0cd1f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-ajouter-panier:hover {
+    background-color: #e55b50;
+}
+.btn-ajouter-panier i {
+    margin-right: 8px;
+}

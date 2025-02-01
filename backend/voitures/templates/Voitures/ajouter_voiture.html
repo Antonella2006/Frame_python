@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ajouter une Voiture</title>
+    
+    <!-- Styles CSS personnalisés -->
+    <style>
+        /* Style général pour la page */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style pour la section du formulaire */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Style des champs de formulaire */
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+
+        /* Style des labels */
+        label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        /* Style pour les boutons */
+        .btn-submit {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .btn-back {
+            width: 100%;
+            background-color: transparent;
+            color: #007bff;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Style de l'espacement */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* Ajout d'un peu d'espacement après chaque champ */
+        .form-control {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ajouter une Nouvelle Voiture</h2>
+
+        <!-- Formulaire d'ajout -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Champs du formulaire générés -->
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn-submit">Ajouter la Voiture</button>
+        </form>
+
+        <!-- Bouton de retour -->
+        <a href="{% url 'liste_voitures' %}" class="btn-back">Retour à la liste des voitures</a>
+    </div>
+</body>
+</html>

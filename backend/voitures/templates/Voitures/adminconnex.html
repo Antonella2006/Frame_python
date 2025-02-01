@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Administrateur</title> <!-- Ajoutez votre fichier CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/connex.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Connexion Administrateur</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" required><br><br>
+        
+            <label for="motdepasse">Mot de passe :</label>
+            <input type="password" name="motdepasse" id="motdepasse" required><br><br>
+        
+            <button type="submit">Se connecter</button>
+        </form>
+        
+    </div>
+</body>
+</html>

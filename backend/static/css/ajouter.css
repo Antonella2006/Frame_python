@@ -1,0 +1,36 @@
+/* Style pour le conteneur du formulaire */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Bouton de soumission */
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Lien de retour */
+a.btn-outline-primary {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+
+a.btn-outline-primary:hover {
+    color: white;
+    background-color: #007bff;
+}

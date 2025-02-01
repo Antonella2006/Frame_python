@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voitures Mercedes - Concessionnaire de Voitures</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Audi.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{% static 'img/logocar.png' %}" alt="Logo de CAR MDG" />
+            </div>
+    
+            <!-- Barre de recherche -->
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher une voiture..." />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+    
+            <!-- Icones de connexion et panier -->
+            <div class="header-icons">
+                <a href="" class="icon-link"><i class="fas fa-shopping-cart"></i> Mon Panier</a>
+                <a href="" class="icon-link"><i class="fas fa-user"></i> Se connecter</a>
+            </div>
+            
+        </div>
+            <nav>
+                <a href="{% url 'accueil' %}"><i class="fas fa-home"></i> ALL</a>
+                <a href="{% url 'audi' %}"><i class="fab fa-audible"></i> AUDI</a>
+                <a href="{% url 'mercedes' %}"><i class="fas fa-car"></i> MERCEDES</a>
+                <a href="{% url 'ford' %}"><i class="fas fa-car-side"></i> FORD</a>
+                <a href="{% url 'about' %}"><i class="fas fa-info-circle"></i> A PROPOS</a>
+            </nav>
+    </header>
+
+<section class="section">
+    <div>
+        <h2>Nos Voitures Mercedes</h2>
+        <div class="voitures">
+            {% for voiture in voitures %}
+                <div class="voiture-card">
+                    <img src="{{ voiture.photo.url }}" alt="Photo de {{ voiture.modele }}">
+                    <h3>{{ voiture.marque.nom }} {{ voiture.modele }}</h3>
+                    <p>Année: {{ voiture.annee }}</p>
+                    <p>Prix: €{{ voiture.prix }}</p>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-ajouter-panier">
+                            <i class="fas fa-shopping-cart"></i>  Ajouter au panier
+                        </button>
+                    </form>
+                </div>
+            {% empty %}
+                <p>Aucune voiture Mercedes disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 CAR MDG. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
